@@ -10,7 +10,7 @@
         </c:if>
         <h2>出退勤の管理ページ</h2>
         <p><a href="<c:url value='/times/new' />">出退勤登録</a>
-
+        <p style="color:red;font-size:0.8em;">⚠出勤時刻と退勤時刻が一致であれば、勤務時間の計算になりません。</p>
         <table id="times_list">
             <tbody>
                 <tr>

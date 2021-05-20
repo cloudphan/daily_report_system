@@ -4,23 +4,17 @@
     <c:param name="content">
         <c:choose>
             <c:when test="${times != null}">
-                <h2>id : ${times.id} の従業員情報　編集ページ</h2>
-                <p>（パスワードは変更する場合のみ入力してください）</p>
+                <h2>出勤登録id : ${times.id} の編集ページ</h2>
                 <form method="POST" action="<c:url value='/times/update' />">
                     <c:import url="_form.jsp" />
                 </form>
 
-                <p><a href="#" onclick="confirmDestroy();">削除する</a></p>
+                <p style="color:red">⚠注意：削除不可</p>
+                <p style="color:red;font-size:0.8em;">⚠削除したい場合は出勤時間と退勤時間が同じように設定してください。</p>
                 <form method="POST" action="<c:url value='/times/destroy' />">
                     <input type="hidden" name="_token" value="${_token}" />
                 </form>
-                <script>
-                    function confirmDestroy() {
-                        if(confirm("本当に削除してよろしいですか？")) {
-                            document.forms[1].submit();
-                        }
-                    }
-                </script>
+
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>

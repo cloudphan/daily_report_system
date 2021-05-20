@@ -155,3 +155,21 @@ pre {
 h3 {
     font-size: larger;
 }
+table#times_list th {
+    font-weight: bold;
+}
+
+table#times_list .times_date {
+    width: 25%;
+}
+table#times_list .times_in {
+    width: 25%;
+}
+
+table#times_list .times_out {
+    width: 25%;
+}
+
+table#times_list .times_action {
+    width: 25%;
+}
