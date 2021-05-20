@@ -21,11 +21,11 @@
                         </tr>
                         <tr>
                             <th>出勤時間</th>
-                            <td><fmt:formatDate value="${times.in_time}" pattern="HH:mm" /></td>
+                            <td><fmt:formatDate value="${times.in_time}" pattern="(dd日)　　HH:mm" /></td>
                         </tr>
                         <tr>
                             <th>退勤時間</th>
-                            <td><fmt:formatDate value="${times.out_time}" pattern="HH:mm" /></td>
+                            <td><fmt:formatDate value="${times.out_time}" pattern="(dd日)　　HH:mm" /></td>
                         </tr>
 
                     </tbody>

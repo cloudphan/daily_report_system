@@ -14,7 +14,7 @@
         <table id="times_list">
             <tbody>
                 <tr>
-                    <th class="times_date">日</th>
+                    <th class="times_date">出勤日</th>
                     <th class="times_in">出勤</th>
                     <th class="times_out">退勤</th>
                     <th class="times_action">操作</th>
@@ -22,8 +22,8 @@
                 <c:forEach var="times" items="${times}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td class="times_date"><fmt:formatDate value='${times.in_time}' pattern='yyyy年MM月dd日' /></td>
-                        <td class="times_in"><fmt:formatDate value='${times.in_time}' pattern='HH:mm' /></td>
-                        <td class="times_out"><fmt:formatDate value='${times.out_time}' pattern='HH:mm' /></td>
+                        <td class="times_in"><fmt:formatDate value='${times.in_time}' pattern='(dd日)　　HH:mm' /></td>
+                        <td class="times_out"><fmt:formatDate value='${times.out_time}' pattern='(dd日)　　HH:mm' /></td>
                         <td class="times_action"><a href="<c:url value='/times/show?id=${times.id}' />">編集</a></td>
                     </tr>
 
