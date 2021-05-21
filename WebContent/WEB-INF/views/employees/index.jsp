@@ -12,17 +12,24 @@
             <tbody>
                 <tr>
                     <th>社員番号</th>
+                    <th>権限</th>
                     <th>氏名</th>
                     <th>操作</th>
                 </tr>
                 <c:forEach var="employee" items="${employees}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${employee.code}" /></td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${employee.admin_flag == 1}">管理者</c:when>
+                                <c:otherwise>一般</c:otherwise>
+                            </c:choose>
+                        </td>
                         <td><c:out value="${employee.name}" /></td>
                         <td>
                             <c:choose>
                                 <c:when test="${employee.delete_flag == 1}">
-                                    （削除済み）
+                                    <span style="color:red">（削除済み）</span>
                                 </c:when>
                                 <c:otherwise>
                                     <a href="<c:url value='/employees/show?id=${employee.id}' />">詳細を表示</a>
