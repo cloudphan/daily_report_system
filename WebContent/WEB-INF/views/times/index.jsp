@@ -30,5 +30,19 @@
                 </c:forEach>
             </tbody>
         </table>
+        <div id="pagination">
+            （全 ${times_count} 件）<br />
+            <c:forEach var="i" begin="1" end="${((times_count - 1) / 10) + 1}" step="1">
+                <c:choose>
+                    <c:when test="${i == page}">
+                        <c:out value="${i}" />&nbsp;
+                    </c:when>
+                    <c:otherwise>
+                        <a href="<c:url value='/times/index?page=${i}' />"><c:out value="${i}" /></a>&nbsp;
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        </div>
+
     </c:param>
 </c:import>

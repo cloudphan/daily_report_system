@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.Timestamp;
 
 import javax.persistence.EntityManager;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -57,8 +56,7 @@ public class TimesCreateServlet extends HttpServlet {
             em.close();
             request.getSession().setAttribute("flush", "出勤時間を登録しました。");
 
-            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/times/index.jsp");
-            rd.forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/times/index");
         }
     }
 

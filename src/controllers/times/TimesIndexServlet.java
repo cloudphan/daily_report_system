@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Employee;
 import models.Times;
 import utils.DBUtil;
 
@@ -36,16 +37,33 @@ public class TimesIndexServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
 
         int page = 1;
+        Employee login_employee = (Employee)request.getSession().getAttribute("login_employee");
+
         try{
             page = Integer.parseInt(request.getParameter("page"));
-        } catch(NumberFormatException e) { }
-        List<Times> times = em.createNamedQuery("getAllTimes", Times.class)
-                                     .setFirstResult(10 * (page - 1))
-                                     .setMaxResults(10)
-                                     .getResultList();
+        } catch(NumberFormatException ex) { }
+        List<Times> times;
+        long times_count;
+        if(login_employee.getAdmin_flag() == 0){
+            times = em.createNamedQuery("getMyAllTimes", Times.class)
+                    .setParameter("employee", login_employee)
+                    .setFirstResult(10 * (page - 1))
+                    .setMaxResults(10)
+                    .getResultList();
 
-        long times_count = (long)em.createNamedQuery("getCount", Long.class)
-                                       .getSingleResult();
+            times_count = (long)em.createNamedQuery("getMyCount", Long.class)
+                      .setParameter("employee", login_employee)
+                      .getSingleResult();
+        }else{
+            times = em.createNamedQuery("getAllTimes", Times.class)
+                    .setFirstResult(10 * (page - 1))
+                    .setMaxResults(10)
+                    .getResultList();
+
+            times_count = (long)em.createNamedQuery("getCount", Long.class)
+                      .getSingleResult();
+        }
+
 
         em.close();
 

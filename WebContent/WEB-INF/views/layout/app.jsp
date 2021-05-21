@@ -23,6 +23,7 @@
                 </div>
                 <c:if test="${sessionScope.login_employee != null}">
                     <div id="employee_name">
+                        <c:if test="${sessionScope.login_employee.admin_flag == 1}"><span style="color:green">(Admin)</span></c:if>
                         <c:out value="${sessionScope.login_employee.name}" />&nbsp;さん&nbsp;&nbsp;&nbsp;
                         <a href="<c:url value='/logout' />">ログアウト</a>
                     </div>

@@ -22,7 +22,15 @@ import javax.persistence.Table;
     @NamedQuery(
         name = "getCount",
         query = "SELECT COUNT(t) FROM Times AS t"
-    )
+    ),
+    @NamedQuery(
+            name = "getMyAllTimes",
+            query = "SELECT t FROM Times AS t WHERE t.employee = :employee ORDER BY t.id DESC"
+        ),
+        @NamedQuery(
+            name = "getMyCount",
+            query = "SELECT COUNT(t) FROM Times AS t WHERE t.employee = :employee"
+        )
 })
 @Entity
 public class Times {
