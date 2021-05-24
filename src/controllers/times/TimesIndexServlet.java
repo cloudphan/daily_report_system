@@ -54,6 +54,7 @@ public class TimesIndexServlet extends HttpServlet {
             times_count = (long)em.createNamedQuery("getMyCount", Long.class)
                       .setParameter("employee", login_employee)
                       .getSingleResult();
+
         }else{
             times = em.createNamedQuery("getAllTimes", Times.class)
                     .setFirstResult(10 * (page - 1))
@@ -62,6 +63,7 @@ public class TimesIndexServlet extends HttpServlet {
 
             times_count = (long)em.createNamedQuery("getCount", Long.class)
                       .getSingleResult();
+
         }
 
 

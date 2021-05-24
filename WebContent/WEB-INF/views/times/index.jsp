@@ -17,6 +17,7 @@
                     <th class="times_date">出勤日</th>
                     <th class="times_in">出勤</th>
                     <th class="times_out">退勤</th>
+                    <th class="times_worked">労働時間</th>
                     <th class="times_action">操作</th>
                 </tr>
                 <c:forEach var="times" items="${times}" varStatus="status">
@@ -24,7 +25,19 @@
                         <td class="times_date"><fmt:formatDate value='${times.in_time}' pattern='yyyy年MM月dd日' /></td>
                         <td class="times_in"><fmt:formatDate value='${times.in_time}' pattern='(dd日)　　HH:mm' /></td>
                         <td class="times_out"><fmt:formatDate value='${times.out_time}' pattern='(dd日)　　HH:mm' /></td>
-                        <td class="times_action"><a href="<c:url value='/times/show?id=${times.id}' />">編集</a></td>
+                        <td class="times_worked">
+                            <script>
+                                var date1, date2;
+                                 date1 = new Date('${times.out_time}');
+                                 date2 = new Date('${times.in_time}');
+                                var res = Math.abs(date1 - date2) / 1000;
+                                 var days = Math.floor(res / 86400);
+                                 var hours = Math.floor(res / 3600) % 24;
+                                 var minutes = Math.floor(res / 60) % 60;
+                                 document.write(days*24+hours+"時間"+minutes+"分");
+                             </script>
+                        </td>
+                         <td class="times_action"><a href="<c:url value='/times/show?id=${times.id}' />">編集</a></td>
                     </tr>
 
                 </c:forEach>

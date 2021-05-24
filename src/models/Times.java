@@ -49,6 +49,7 @@ public class Times {
     @Column(name = "out_time")
     private Timestamp out_time;
 
+
     public Integer getId() {
         return id;
     }
@@ -79,5 +80,6 @@ public class Times {
     public void setOut_time(Timestamp out_time) {
         this.out_time = out_time;
     }
+
 
 }
